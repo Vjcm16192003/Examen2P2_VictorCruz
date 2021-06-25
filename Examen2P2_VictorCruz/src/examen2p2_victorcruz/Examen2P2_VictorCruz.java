@@ -5,7 +5,10 @@
  */
 package examen2p2_victorcruz;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +21,20 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
      */
     public Examen2P2_VictorCruz() {
         initComponents();
+        DefaultComboBoxModel modelo1= (DefaultComboBoxModel)CB_TipoCarroceria.getModel(); 
+        modelo1.addElement("Null");
+        modelo1.addElement("Familiar");
+        modelo1.addElement("SUV");
+        modelo1.addElement("Compacto");
+        modelo1.addElement("Subcompacto");
+        modelo1.addElement("Deportivo");
+        CB_TipoCarroceria.setModel(modelo1);
+        DefaultComboBoxModel modelo2= (DefaultComboBoxModel)CB_TipoMotorCarro.getModel();
+        modelo2.addElement("Null");
+        modelo2.addElement("Combustion");
+        modelo2.addElement("Hibrido");
+        modelo2.addElement("Electrico");
+        CB_TipoMotorCarro.setModel(modelo2);
     }
 
     /**
@@ -36,12 +53,23 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         JB_ModificarCarro = new javax.swing.JButton();
         JB_EliminarCarros = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        TF_MarcaCarro = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        TF_ModeloCarro = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        TF_VINCarro = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        CB_TipoCarroceria = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        CB_TipoMotorCarro = new javax.swing.JComboBox<>();
+        JB_BuscarMotorCarro = new javax.swing.JButton();
         JD_AdminBateria = new javax.swing.JDialog();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        JT_ListarCarros1 = new javax.swing.JTable();
-        JB_ModificarCarro1 = new javax.swing.JButton();
-        JB_EliminarCarros1 = new javax.swing.JButton();
+        JT_ListarBaterias = new javax.swing.JTable();
+        JB_ModificarBateria = new javax.swing.JButton();
+        JB_EliminarBateria = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         JD_MenuSimulacion = new javax.swing.JDialog();
         JB_EsamblarBaterias = new javax.swing.JButton();
@@ -62,6 +90,36 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         JB_IniciarEsamblaje = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         JT_SimulacionEnsamblaje = new javax.swing.JTable();
+        JD_Combustion = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        JS_Cilidrada = new javax.swing.JSpinner();
+        jLabel15 = new javax.swing.JLabel();
+        JS_NumCili = new javax.swing.JSpinner();
+        jLabel16 = new javax.swing.JLabel();
+        JS_Consumo = new javax.swing.JSpinner();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        JB_AgregarVehiculos = new javax.swing.JButton();
+        JD_Hibrido = new javax.swing.JDialog();
+        JS_Capacidad_m = new javax.swing.JSpinner();
+        JS_Cantidad_de_galones = new javax.swing.JSpinner();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        TF_Precio = new javax.swing.JTextField();
+        JB_AgregarVehiculos1 = new javax.swing.JButton();
+        JD_Electrico = new javax.swing.JDialog();
+        JS_Coeficiente = new javax.swing.JSpinner();
+        jLabel24 = new javax.swing.JLabel();
+        JS_NumMotores = new javax.swing.JSpinner();
+        jLabel25 = new javax.swing.JLabel();
+        JS_Recarga = new javax.swing.JSpinner();
+        JB_AgregarVehiculos2 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         JB_SalirDelSistema = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -93,11 +151,43 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         jScrollPane3.setViewportView(JT_ListarCarros);
 
         JB_ModificarCarro.setText("Modificar");
+        JB_ModificarCarro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_ModificarCarroMouseClicked(evt);
+            }
+        });
 
         JB_EliminarCarros.setText("Eliminar");
+        JB_EliminarCarros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_EliminarCarrosMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel4.setText("Listar Carros");
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setText("Marca: ");
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setText("Modelo: ");
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setText("VIN:");
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setText("Carrocería: ");
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setText("Tipo de Motor: ");
+
+        JB_BuscarMotorCarro.setText("Buscar Motor");
+        JB_BuscarMotorCarro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_BuscarMotorCarroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout JD_AdminCarrosLayout = new javax.swing.GroupLayout(JD_AdminCarros.getContentPane());
         JD_AdminCarros.getContentPane().setLayout(JD_AdminCarrosLayout);
@@ -106,9 +196,38 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
             .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
                 .addGap(340, 340, 340)
                 .addComponent(jLabel3)
-                .addContainerGap(516, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JD_AdminCarrosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
+                .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                        .addComponent(JB_BuscarMotorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(CB_TipoMotorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                                .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9))
+                                        .addGap(28, 28, 28))
+                                    .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel11))
+                                        .addGap(37, 37, 37)))
+                                .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CB_TipoCarroceria, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TF_MarcaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TF_VINCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TF_ModeloCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(75, 75, 75)))
                 .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
@@ -125,8 +244,33 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JD_AdminCarrosLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(TF_MarcaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(TF_ModeloCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(TF_VINCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(CB_TipoCarroceria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(CB_TipoMotorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(JB_BuscarMotorCarro)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JD_AdminCarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_EliminarCarros)
@@ -137,7 +281,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel5.setText("Administracion Baterias");
 
-        JT_ListarCarros1.setModel(new javax.swing.table.DefaultTableModel(
+        JT_ListarBaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -153,11 +297,21 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(JT_ListarCarros1);
+        jScrollPane4.setViewportView(JT_ListarBaterias);
 
-        JB_ModificarCarro1.setText("Modificar");
+        JB_ModificarBateria.setText("Modificar");
+        JB_ModificarBateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_ModificarBateriaMouseClicked(evt);
+            }
+        });
 
-        JB_EliminarCarros1.setText("Eliminar");
+        JB_EliminarBateria.setText("Eliminar");
+        JB_EliminarBateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_EliminarBateriaMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel6.setText("Listar Bateria");
@@ -169,31 +323,34 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
             .addGroup(JD_AdminBateriaLayout.createSequentialGroup()
                 .addGap(340, 340, 340)
                 .addComponent(jLabel5)
-                .addContainerGap(505, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JD_AdminBateriaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JD_AdminBateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addGroup(JD_AdminBateriaLayout.createSequentialGroup()
-                        .addComponent(JB_ModificarCarro1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JB_EliminarCarros1))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                    .addGroup(JD_AdminBateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JD_AdminBateriaLayout.createSequentialGroup()
+                            .addComponent(JB_ModificarBateria)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(JB_EliminarBateria)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JD_AdminBateriaLayout.createSequentialGroup()
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(33, 33, 33)))))
         );
         JD_AdminBateriaLayout.setVerticalGroup(
             JD_AdminBateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JD_AdminBateriaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JD_AdminBateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JB_EliminarCarros1)
-                    .addComponent(JB_ModificarCarro1))
+                    .addComponent(JB_EliminarBateria)
+                    .addComponent(JB_ModificarBateria))
                 .addGap(55, 55, 55))
         );
 
@@ -360,6 +517,222 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JB_IniciarEsamblaje, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel13.setText("Motor de Combustion");
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel14.setText("Cilidrada del motor: ");
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel15.setText("Consumo de cobustible: ");
+
+        JS_NumCili.setModel(new javax.swing.SpinnerNumberModel(3, 3, 8, 1));
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel16.setText("Numero de cilidros: ");
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel17.setText("Litros/Kilometros");
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel18.setText("en litros");
+
+        JB_AgregarVehiculos.setText("Agregar a Vehiculos");
+
+        javax.swing.GroupLayout JD_CombustionLayout = new javax.swing.GroupLayout(JD_Combustion.getContentPane());
+        JD_Combustion.getContentPane().setLayout(JD_CombustionLayout);
+        JD_CombustionLayout.setHorizontalGroup(
+            JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_CombustionLayout.createSequentialGroup()
+                .addGroup(JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JD_CombustionLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel13))
+                    .addGroup(JD_CombustionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel16))
+                        .addGap(38, 38, 38)
+                        .addGroup(JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JS_NumCili, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JD_CombustionLayout.createSequentialGroup()
+                                .addComponent(JS_Cilidrada, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel18))))
+                    .addGroup(JD_CombustionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel15)
+                        .addGap(18, 18, 18)
+                        .addComponent(JS_Consumo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17))
+                    .addGroup(JD_CombustionLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(JB_AgregarVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
+        JD_CombustionLayout.setVerticalGroup(
+            JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_CombustionLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel13)
+                .addGap(36, 36, 36)
+                .addGroup(JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(JS_Cilidrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addGroup(JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JS_NumCili, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(19, 19, 19)
+                .addGroup(JD_CombustionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(JS_Consumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(26, 26, 26)
+                .addComponent(JB_AgregarVehiculos)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        JS_Cantidad_de_galones.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel19.setText("Cantidad de galones: ");
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel20.setText("en litros");
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel21.setText("Motor Hibrido");
+
+        jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel22.setText("Capacidad de motor:");
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel23.setText("Precio inicial: ");
+
+        JB_AgregarVehiculos1.setText("Agregar a Vehiculos");
+
+        javax.swing.GroupLayout JD_HibridoLayout = new javax.swing.GroupLayout(JD_Hibrido.getContentPane());
+        JD_Hibrido.getContentPane().setLayout(JD_HibridoLayout);
+        JD_HibridoLayout.setHorizontalGroup(
+            JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_HibridoLayout.createSequentialGroup()
+                .addGroup(JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JD_HibridoLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel23))
+                        .addGap(38, 38, 38)
+                        .addGroup(JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JS_Cantidad_de_galones, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JD_HibridoLayout.createSequentialGroup()
+                                .addComponent(JS_Capacidad_m, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel20))
+                            .addComponent(TF_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(JD_HibridoLayout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JD_HibridoLayout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(JB_AgregarVehiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+        JD_HibridoLayout.setVerticalGroup(
+            JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_HibridoLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel21)
+                .addGap(36, 36, 36)
+                .addGroup(JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(JS_Capacidad_m, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addGap(18, 18, 18)
+                .addGroup(JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JS_Cantidad_de_galones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(18, 18, 18)
+                .addGroup(JD_HibridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(TF_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(JB_AgregarVehiculos1)
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+
+        jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel24.setText("Tiempo de Recarga:");
+
+        JS_NumMotores.setModel(new javax.swing.SpinnerNumberModel());
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel25.setText("Numero de motores: ");
+
+        JB_AgregarVehiculos2.setText("Agregar a Vehiculos");
+
+        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel28.setText("Motor Electrico");
+
+        jLabel29.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel29.setText("Coeficiente Aerodinamico:");
+
+        javax.swing.GroupLayout JD_ElectricoLayout = new javax.swing.GroupLayout(JD_Electrico.getContentPane());
+        JD_Electrico.getContentPane().setLayout(JD_ElectricoLayout);
+        JD_ElectricoLayout.setHorizontalGroup(
+            JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_ElectricoLayout.createSequentialGroup()
+                .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JD_ElectricoLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel28))
+                    .addGroup(JD_ElectricoLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(JB_AgregarVehiculos2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JD_ElectricoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JD_ElectricoLayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JS_Recarga, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JD_ElectricoLayout.createSequentialGroup()
+                                .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel25))
+                                .addGap(30, 30, 30)
+                                .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(JS_Coeficiente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JS_NumMotores, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(263, Short.MAX_VALUE))
+        );
+        JD_ElectricoLayout.setVerticalGroup(
+            JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_ElectricoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel28)
+                .addGap(36, 36, 36)
+                .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(JS_Coeficiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JS_NumMotores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(19, 19, 19)
+                .addGroup(JD_ElectricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(JS_Recarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(JB_AgregarVehiculos2)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -547,6 +920,133 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_JB_IniciarEsamblajeMouseClicked
 
+    private void JB_ModificarCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_ModificarCarroMouseClicked
+        // TODO add your handling code here:
+        AdminCarros acar
+                = new AdminCarros("./Carros.vjcm");
+        acar.cargarArchivo();
+        DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarCarros.getModel();
+        int p = JT_ListarCarros.getSelectedRow();
+        if (acar.getListaCarros().get(p) instanceof Combustion) {
+            acar.getListaCarros().get(p).setVin(Integer.parseInt(JOptionPane.showInputDialog("VIN del Carro: ")));
+            acar.getListaCarros().get(p).setMarca(JOptionPane.showInputDialog("Marca del Carro: "));
+            acar.getListaCarros().get(p).setModelo(JOptionPane.showInputDialog("Modelo del Carro: "));
+            acar.getListaCarros().get(p).setCarroceria(JOptionPane.showInputDialog("Tipo Carroceria del Carro\n"
+                    + "[Familiar/SUV/Compacto/Subcompacto/deportivo]: "));
+            ((Combustion)acar.getListaCarros().get(p)).setCilindraje(Integer.parseInt(JOptionPane.showInputDialog("Cilindraje del Motor[en Litros]: ")));
+            ((Combustion)acar.getListaCarros().get(p)).setCant_cilin(Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Cilindros: ")));
+            ((Combustion)acar.getListaCarros().get(p)).setConsumo(Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Conusmo[L/KM]: ")));
+        } else if (acar.getListaCarros().get(p) instanceof Electrico) {
+            acar.getListaCarros().get(p).setVin(Integer.parseInt(JOptionPane.showInputDialog("VIN del Carro: ")));
+            acar.getListaCarros().get(p).setMarca(JOptionPane.showInputDialog("Marca del Carro: "));
+            acar.getListaCarros().get(p).setModelo(JOptionPane.showInputDialog("Modelo del Carro: "));
+            acar.getListaCarros().get(p).setCarroceria(JOptionPane.showInputDialog("Tipo Carroceria del Carro\n"
+                    + "[Familiar/SUV/Compacto/Subcompacto/deportivo]: "));
+            ((Electrico)acar.getListaCarros().get(p)).setCoeficiente(Integer.parseInt(JOptionPane.showInputDialog("Coeficiente Aerodinamico: ")));
+            ((Electrico)acar.getListaCarros().get(p)).setCanti_motor(Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Motores: ")));
+            ((Electrico)acar.getListaCarros().get(p)).setTiempo_recarga(Integer.parseInt(JOptionPane.showInputDialog("Tiempo de Recarga: ")));
+            
+        } else if (acar.getListaCarros().get(p) instanceof Hibrido) {
+            acar.getListaCarros().get(p).setVin(Integer.parseInt(JOptionPane.showInputDialog("VIN del Carro: ")));
+            acar.getListaCarros().get(p).setMarca(JOptionPane.showInputDialog("Marca del Carro: "));
+            acar.getListaCarros().get(p).setModelo(JOptionPane.showInputDialog("Modelo del Carro: "));
+            acar.getListaCarros().get(p).setCarroceria(JOptionPane.showInputDialog("Tipo Carroceria del Carro\n"
+                    + "[Familiar/SUV/Compacto/Subcompacto/deportivo]: "));
+            ((Hibrido)acar.getListaCarros().get(p)).setCantidad_de_galones(Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Galones: ")));
+            ((Hibrido)acar.getListaCarros().get(p)).setCapaci_m(Integer.parseInt(JOptionPane.showInputDialog("Capacidad del Motor: ")));
+            ((Hibrido)acar.getListaCarros().get(p)).setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Precio: ")));
+        }//fin de las condiciones
+        acar.escribirArchivo();
+        modelo1.setNumRows(0);
+        JT_ListarCarros.setModel(modelo1);
+        for (int i = 0; i < acar.getListaCarros().size(); i++) {
+            Object[] o = {acar.getListaCarros().get(i).getMarca(),
+                acar.getListaCarros().get(i).getVin(),
+                acar.getListaCarros().get(i).getModelo(),
+                acar.getListaCarros().get(i).getCarroceria()};
+            modelo1.addRow(o);
+        }
+        JT_ListarCarros.setModel(modelo1);
+        JOptionPane.showMessageDialog(JD_AdminCarros, "Carro Modficado Exitosamente ");
+    }//GEN-LAST:event_JB_ModificarCarroMouseClicked
+
+    private void JB_EliminarCarrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_EliminarCarrosMouseClicked
+        // TODO add your handling code here:
+        AdminCarros am
+                = new AdminCarros("./Carros.vjcm");
+        am.cargarArchivo();
+        int p = JT_ListarCarros.getSelectedRow();
+        am.getListaCarros().remove(p);
+        am.escribirArchivo();
+        DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarBaterias.getModel();
+        modelo1.removeRow(p);
+        JT_ListarBaterias.setModel(modelo1);
+        JOptionPane.showMessageDialog(JD_AdminCarros, "Computadora Eliminada Exitosamente ");
+    }//GEN-LAST:event_JB_EliminarCarrosMouseClicked
+
+    private void JB_ModificarBateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_ModificarBateriaMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarBaterias.getModel();
+        AdminBateria at
+                = new AdminBateria("./Bateria.vjcm");
+        at.cargarArchivo();
+        int p = JT_ListarBaterias.getSelectedRow();
+        at.getListaBateria().get(p).setMarca(JOptionPane.showInputDialog("Marca de las Baterias: "));
+        at.getListaBateria().get(p).setTipo_Vehiculo(JOptionPane.showInputDialog("Tipo de Carroceria: "));
+        at.getListaBateria().get(p).setAutonomia(Integer.parseInt(JOptionPane.showInputDialog("Autonomia[KM]: ")));
+        at.getListaBateria().get(p).setCapacidad(Integer.parseInt(JOptionPane.showInputDialog("Capacidad Bateria [Amh/Kw]: ")));
+        at.getListaBateria().get(p).setCapacidad_carga(Integer.parseInt(JOptionPane.showInputDialog("Capacidad Carga[KG]: ")));
+        at.getListaBateria().get(p).setCapapcidad_modulos(Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Modulos: ")));
+        at.getListaBateria().get(p).setTiempo(Integer.parseInt(JOptionPane.showInputDialog("Tiempo de Ensamblaje: ")));
+        at.escribirArchivo();
+        modelo1.setNumRows(0);
+        JT_ListarCarros.setModel(modelo1);
+        for (int i = 0; i < at.getListaBateria().size(); i++) {
+            Object[] o = {at.getListaBateria().get(i).getMarca(), 
+                at.getListaBateria().get(i).getCapacidad(), 
+                at.getListaBateria().get(i).getTipo_Vehiculo(),
+                at.getListaBateria().get(i).getTiempo(), 
+                at.getListaBateria().get(i).getAutonomia(), 
+                at.getListaBateria().get(i).getCapacidad_carga()
+            };
+            modelo1.addRow(o);
+        }
+        JT_ListarBaterias.setModel(modelo1);
+        JOptionPane.showMessageDialog(JD_AdminBateria, "Bateria Modficada Exitosamente ");
+    }//GEN-LAST:event_JB_ModificarBateriaMouseClicked
+
+    private void JB_EliminarBateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_EliminarBateriaMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarBaterias.getModel();
+        AdminBateria at
+                = new AdminBateria("./Bateria.vjcm");
+        at.cargarArchivo();
+        int p = JT_ListarBaterias.getSelectedRow();
+        at.getListaBateria().remove(p);
+        at.escribirArchivo();
+        modelo1.removeRow(p);
+        JT_ListarBaterias.setModel(modelo1);
+        JOptionPane.showMessageDialog(JD_AdminBateria, "Tecnico Modficado Exitosamente ");
+    }//GEN-LAST:event_JB_EliminarBateriaMouseClicked
+
+    private void JB_BuscarMotorCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_BuscarMotorCarroMouseClicked
+        // TODO add your handling code here:
+        if(CB_TipoMotorCarro.getSelectedIndex()!=0){
+            int p=CB_TipoMotorCarro.getSelectedIndex();
+            switch(p){
+                case 1:
+                COMBUSTION();
+                break;
+                case 2:
+                HIBRIDO();
+                break;
+                case 3:
+                ELECTRICO();
+                break;
+            }
+        }
+    }//GEN-LAST:event_JB_BuscarMotorCarroMouseClicked
+
     
     public void AdminCarros() {
         JD_AdminCarros.pack();
@@ -576,6 +1076,24 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         JD_MenuSimulacion.setVisible(true);
     }
     
+    public void COMBUSTION() {
+        JD_Combustion.pack();
+        JD_Combustion.setModal(true);
+        JD_Combustion.setLocationRelativeTo(this);
+        JD_Combustion.setVisible(true);
+    }
+      public void HIBRIDO() {
+        JD_Hibrido.pack();
+        JD_Hibrido.setModal(true);
+        JD_Hibrido.setLocationRelativeTo(this);
+        JD_Hibrido.setVisible(true);
+    }
+       public void ELECTRICO() {
+        JD_Electrico.pack();
+        JD_Electrico.setModal(true);
+        JD_Electrico.setLocationRelativeTo(this);
+        JD_Electrico.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -587,7 +1105,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -612,17 +1130,26 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB_TipoCarroceria;
+    private javax.swing.JComboBox<String> CB_TipoMotorCarro;
+    private javax.swing.JButton JB_AgregarVehiculos;
+    private javax.swing.JButton JB_AgregarVehiculos1;
+    private javax.swing.JButton JB_AgregarVehiculos2;
+    private javax.swing.JButton JB_BuscarMotorCarro;
+    private javax.swing.JButton JB_EliminarBateria;
     private javax.swing.JButton JB_EliminarCarros;
-    private javax.swing.JButton JB_EliminarCarros1;
     private javax.swing.JButton JB_EsamblarBaterias;
     private javax.swing.JButton JB_GenerarReporteEnsamblaje;
     private javax.swing.JButton JB_IniciarEsamblaje;
+    private javax.swing.JButton JB_ModificarBateria;
     private javax.swing.JButton JB_ModificarCarro;
-    private javax.swing.JButton JB_ModificarCarro1;
     private javax.swing.JButton JB_SalirDelSistema;
     private javax.swing.JDialog JD_AdminBateria;
     private javax.swing.JDialog JD_AdminCarros;
+    private javax.swing.JDialog JD_Combustion;
+    private javax.swing.JDialog JD_Electrico;
     private javax.swing.JDialog JD_Ensamblaje;
+    private javax.swing.JDialog JD_Hibrido;
     private javax.swing.JDialog JD_MenuSimulacion;
     private javax.swing.JLabel JL_BateriaActual;
     private javax.swing.JList<String> JL_BateriaEnsamblaje;
@@ -633,12 +1160,42 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMI_SimulacionHilo;
     private javax.swing.JMenu JM_AdminCarrosBateria;
     private javax.swing.JMenu JM_SimulacionHilo;
+    private javax.swing.JSpinner JS_Cantidad_de_galones;
+    private javax.swing.JSpinner JS_Capacidad_m;
+    private javax.swing.JSpinner JS_Cilidrada;
+    private javax.swing.JSpinner JS_Coeficiente;
+    private javax.swing.JSpinner JS_Consumo;
+    private javax.swing.JSpinner JS_NumCili;
+    private javax.swing.JSpinner JS_NumMotores;
+    private javax.swing.JSpinner JS_Recarga;
+    private javax.swing.JTable JT_ListarBaterias;
     private javax.swing.JTable JT_ListarCarros;
-    private javax.swing.JTable JT_ListarCarros1;
     private javax.swing.JTable JT_SimulacionEnsamblaje;
     private javax.swing.JProgressBar PB_Ensamblaje;
+    private javax.swing.JTextField TF_MarcaCarro;
+    private javax.swing.JTextField TF_ModeloCarro;
+    private javax.swing.JTextField TF_Precio;
+    private javax.swing.JTextField TF_VINCarro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel47;
@@ -646,6 +1203,8 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
