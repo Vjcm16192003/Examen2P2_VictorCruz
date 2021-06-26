@@ -805,6 +805,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
 
     private void JB_SalirDelSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_SalirDelSistemaMouseClicked
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_JB_SalirDelSistemaMouseClicked
 
     private void JMI_AdminCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_AdminCarrosActionPerformed
@@ -822,13 +823,47 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
 
     private void JB_EsamblarBateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_EsamblarBateriasMouseClicked
         // TODO add your handling code here:
-        /*DefaultListModel modelo = (DefaultListModel) JL_ComputadorasEnsamblajes.getModel();
-        DefaultListModel modelo2 = (DefaultListModel) JL_TecnicosEnsamblaje.getModel();
-        String computadora = ((Computadora) modelo.getElementAt(JL_ComputadorasEnsamblajes.getSelectedIndex())).getSerie();
-        String tecnico = ((Tecnico) modelo2.getElementAt(JL_TecnicosEnsamblaje.getSelectedIndex())).getNombre();
-        JL_ComputadoraActual.setText(computadora);
-        JL_TecnicoActual.setText(tecnico);
-        SimulacionEnsamblaje();*/
+        int pos = JL_CarrosEnsamblados.getSelectedIndex();
+        int pos2 = JL_BateriaEnsamblaje.getSelectedIndex();
+        AdminCarros acar
+                = new AdminCarros("./Vehiculos.vjcm");
+        acar.cargarArchivo();
+
+        AdminBateria abat
+                = new AdminBateria("./Baterias.vjcm");
+        abat.cargarArchivo();
+        boolean flag = false;
+        boolean flag2 = false;
+        if (acar.getListaCarros().get(pos) instanceof Combustion) {
+            JOptionPane.showMessageDialog(JD_MenuSimulacion, "Lo siento, su Tipo de Motor no es Compatible con la bateria, Intento otro Vehiculo");
+        } else {
+            if (acar.getListaCarros().get(pos) instanceof Electrico) {
+                flag = true;
+                if (abat.getListaBateria().get(pos2).getTipo_Vehiculo().equalsIgnoreCase("Electrico")) {
+                    flag2 = true;
+
+                }//fin del if
+            } else if (acar.getListaCarros().get(pos) instanceof Hibrido) {
+                flag = true;
+                if (abat.getListaBateria().get(pos2).getTipo_Vehiculo().equalsIgnoreCase("Hibrido")) {
+                    flag2 = true;
+                }//fin del if
+            }//fin de las condiciones 
+
+            if (flag == true && flag2 == true) {
+                DefaultListModel modelo = (DefaultListModel) JL_BateriaEnsamblaje.getModel();
+                DefaultListModel modelo2 = (DefaultListModel) JL_CarrosEnsamblados.getModel();
+                String Bateria = ((Bateria) modelo.getElementAt(JL_BateriaEnsamblaje.getSelectedIndex())).getMarca();
+                int Carros = ((Carros) modelo2.getElementAt(JL_CarrosEnsamblados.getSelectedIndex())).getVin();
+                JL_BateriaActual.setText(Bateria);
+                JL_CarroActual.setText(Integer.toString(Carros));
+                Ensamblaje();
+            }else{
+                JOptionPane.showMessageDialog(JD_MenuSimulacion, "Su tipo de Bateria No es la misma que el tipo de Carro Seleccione Correctamente los Objetos");
+            }//fin de la condicion
+        }//fin de la condiciones
+        
+
     }//GEN-LAST:event_JB_EsamblarBateriasMouseClicked
 
     private void JB_GenerarReporteEnsamblajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_GenerarReporteEnsamblajeMouseClicked
@@ -923,7 +958,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
     private void JB_ModificarCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_ModificarCarroMouseClicked
         // TODO add your handling code here:
         AdminCarros acar
-                = new AdminCarros("./Carros.vjcm");
+                = new AdminCarros("./Vehiculos.vjcm");
         acar.cargarArchivo();
         DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarCarros.getModel();
         int p = JT_ListarCarros.getSelectedRow();
@@ -973,7 +1008,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
     private void JB_EliminarCarrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_EliminarCarrosMouseClicked
         // TODO add your handling code here:
         AdminCarros am
-                = new AdminCarros("./Carros.vjcm");
+                = new AdminCarros("./Vehiculos.vjcm");
         am.cargarArchivo();
         int p = JT_ListarCarros.getSelectedRow();
         am.getListaCarros().remove(p);
@@ -988,7 +1023,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarBaterias.getModel();
         AdminBateria at
-                = new AdminBateria("./Bateria.vjcm");
+                = new AdminBateria("./Baterias.vjcm");
         at.cargarArchivo();
         int p = JT_ListarBaterias.getSelectedRow();
         at.getListaBateria().get(p).setMarca(JOptionPane.showInputDialog("Marca de las Baterias: "));
@@ -1019,7 +1054,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel modelo1 = (DefaultTableModel) JT_ListarBaterias.getModel();
         AdminBateria at
-                = new AdminBateria("./Bateria.vjcm");
+                = new AdminBateria("./Baterias.vjcm");
         at.cargarArchivo();
         int p = JT_ListarBaterias.getSelectedRow();
         at.getListaBateria().remove(p);
@@ -1035,13 +1070,13 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
             int p=CB_TipoMotorCarro.getSelectedIndex();
             switch(p){
                 case 1:
-                COMBUSTION();
+                TipoCombustion();
                 break;
                 case 2:
-                HIBRIDO();
+                TipoHibrido();
                 break;
                 case 3:
-                ELECTRICO();
+                TipoElectrico();
                 break;
             }
         }
@@ -1076,19 +1111,19 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
         JD_MenuSimulacion.setVisible(true);
     }
     
-    public void COMBUSTION() {
+    public void TipoCombustion() {
         JD_Combustion.pack();
         JD_Combustion.setModal(true);
         JD_Combustion.setLocationRelativeTo(this);
         JD_Combustion.setVisible(true);
     }
-      public void HIBRIDO() {
+      public void TipoHibrido() {
         JD_Hibrido.pack();
         JD_Hibrido.setModal(true);
         JD_Hibrido.setLocationRelativeTo(this);
         JD_Hibrido.setVisible(true);
     }
-       public void ELECTRICO() {
+       public void TipoElectrico() {
         JD_Electrico.pack();
         JD_Electrico.setModal(true);
         JD_Electrico.setLocationRelativeTo(this);
