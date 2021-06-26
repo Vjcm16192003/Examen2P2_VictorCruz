@@ -53,7 +53,7 @@ public class Electrico extends Carros{
 
     @Override
     public String toString() {
-        return super.toString()+"Tipo: Electrico";
+        return super.toString()+" , Tipo: Electrico";
     }
     
 }

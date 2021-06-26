@@ -91,7 +91,7 @@ public class Bateria implements Serializable{
 
     @Override
     public String toString() {
-        return "Marca: " + Marca + " , Capacidad: " + capacidad + " , Autonomia: " + autonomia + " , Capacidad Carga: " + capacidad_carga + " , Tipo Carro: " + tipo_Vehiculo + ", tiempo=" + tiempo + '}';
+        return "Marca: " + Marca + " , Capacidad: " + capacidad + " , Autonomia: " + autonomia + " , Capacidad Carga: " + capacidad_carga + " , Tipo Carro: " + tipo_Vehiculo + ", Tiempo Esamblaje: " + tiempo;
     }
 
    

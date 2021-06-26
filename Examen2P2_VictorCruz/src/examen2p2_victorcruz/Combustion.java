@@ -53,7 +53,7 @@ public class Combustion extends Carros{
 
     @Override
     public String toString() {
-        return super.toString()+"Tipo: Combustion";
+        return super.toString()+" , Tipo: Combustion";
     }
     
 }

@@ -57,7 +57,7 @@ public class Hibrido extends Carros{
 
     @Override
     public String toString() {
-        return super.toString()+"Tipo: Hibrido";
+        return super.toString()+" , Tipo: Hibrido";
     }
     
     
