@@ -991,6 +991,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
     }//GEN-LAST:event_JMI_AdminBateriaActionPerformed
 
     private void JMI_SimulacionHiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SimulacionHiloActionPerformed
+        
         rep = "";
         DefaultListModel modelo = (DefaultListModel) JL_EnsamblajeCarros.getModel();
         AdminCarros acar
@@ -1002,7 +1003,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
             modelo.addElement(acar.getListaCarros().get(i));
         }
         JL_EnsamblajeCarros.setModel(modelo);
-        System.out.println(modelo);
+        
 
         DefaultListModel model = (DefaultListModel) JL_EsamblajeBaterias.getModel();
         AdminBateria abat
@@ -1014,7 +1015,7 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
             model.addElement(abat.getListaBateria().get(i));
         }//
         JL_EsamblajeBaterias.setModel(model);
-        System.out.println(model);
+        
         MenuEnsamblaje();
     }//GEN-LAST:event_JMI_SimulacionHiloActionPerformed
 
@@ -1065,52 +1066,29 @@ public class Examen2P2_VictorCruz extends javax.swing.JFrame {
 
     private void JB_GenerarReporteEnsamblajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_GenerarReporteEnsamblajeMouseClicked
         // TODO add your handling code here:
-        //me escuchas????
-        /*DefaultTableModel modelo3 = (DefaultTableModel) JT_SimulacionEnsamblaje.getModel();
+        DefaultTableModel model = (DefaultTableModel) JT_SimulacionEnsamblaje.getModel();
         for (int i = 0; i < JT_SimulacionEnsamblaje.getRowCount(); i++) {
-            Object r = modelo3.getValueAt(i, 0);
-            Object r1 = modelo3.getValueAt(i, 1);
-            rep += "\nPieza Ensamblada:" + r + " Tiempo: " + r1 + "\n";
+            Object flag = model.getValueAt(i, 0);
+            Object flag2 = model.getValueAt(i, 1);
+            rep += "\nBateria Ensamblada Actualmente: " + flag + " , Tiempo: " + flag2 + "\n";
 
         }
-        rep += "\n";
-        System.out.println(rep);
-        JFileChooser jfc = new JFileChooser();
-        FileNameExtensionFilter filtro
-        = new FileNameExtensionFilter(
-            "Archivos de texto", "txt");
-        jfc.setFileFilter(filtro);
-        int seleccion = jfc.showSaveDialog(this);
-
-        FileOutputStream fw = null;
-        ObjectOutputStream bw = null;
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-
-                File fichero = null;
-                if (jfc.getFileFilter().getDescription().equals(
-                    "Archivos de texto")) {
-                fichero
-                = new File(jfc.getSelectedFile().getPath() + ".txt");
-            } else {
-                fichero = jfc.getSelectedFile();
-            }
-
-            fw = new FileOutputStream(fichero);
-            bw = new ObjectOutputStream(fw);
-
-            Object f = rep;
-            bw.writeObject(f);
-            bw.flush();
-            //Ya
-
-            JOptionPane.showMessageDialog(JD_MenuEnsamblaje,
-                "Archivo guardado exitosamente");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        rep += " \n";
+        AdminReporte ab
+                = new AdminReporte("./Ensamblados.vjcm");
+        ab.cargarArchivo();
+        Reporte repor =new Reporte(rep);
+        ab.getListaReporte().add(repor);
+        ab.escribirArchivo();
+        JOptionPane.showMessageDialog(JD_MenuSimulacion, "Guardado con exito");
+        String aux="";
+        for (int i = 0; i < ab.getListaReporte().size(); i++) {
+            aux+= i+" ) " +ab.getListaReporte().get(i)+" \n ";
         }
-        }*/
+        JOptionPane.showMessageDialog(JD_MenuSimulacion, "Reporte de ensamblaje actual: \n "+aux);
+        model.setNumRows(0);
+        JT_SimulacionEnsamblaje.setModel(model); 
+        
     }//GEN-LAST:event_JB_GenerarReporteEnsamblajeMouseClicked
 
     private void JB_IniciarEsamblajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_IniciarEsamblajeMouseClicked
